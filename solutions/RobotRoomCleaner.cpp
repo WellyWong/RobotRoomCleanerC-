@@ -20,16 +20,16 @@ bool interface::move()
 	switch (dir)
 	{
 	case 0:
-		y = -1;
+		x = -1;
 		break;
 	case 1:
-		x = 1;
-		break;
-	case 2:
 		y = 1;
 		break;
+	case 2:
+		x = 1;
+		break;
 	case 3:
-		x = -1;
+		y = -1;
 		break;
 	}
 	int newX = pos[0] + x;
@@ -97,7 +97,7 @@ void dfs(interface& Robot, int i, int j, int currDir, std::set<std::pair<int, in
 			Robot.turnRight();
 			Robot.turnRight();
 		}
-		Robot.turnRight();		//this turn and the loop above nx will make Robot recurse in 4 directions
+		Robot.turnRight();
 		currDir += 1;
 		currDir %= 4;
 	}
@@ -106,7 +106,7 @@ void dfs(interface& Robot, int i, int j, int currDir, std::set<std::pair<int, in
 void cleanRoom(interface& Robot)
 {
 	std::set<std::pair<int, int>> visited;
-	dfs(Robot, 0, 0, 0, visited);
+	dfs(Robot, 1, 1, 0, visited);
 }
 
 int main()
